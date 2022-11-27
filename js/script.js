@@ -11,7 +11,7 @@ let special = document.querySelector("#special");
 let eight = document.querySelector("#eight");
 let allConditionsTrue = false;
 
-// Show and Hide Password
+// Mostrar e esconder senha
 toggleBtn.onclick = function () {
 	if (pswrd.type === "password") {
 		pswrd.setAttribute("type", "text");
@@ -32,7 +32,7 @@ function checkValidation(problem, solution, pass) {
 	}
 }
 
-// Handle Validation
+// Validação de senha
 function passwordValidation(pass) {
 	const lower = new RegExp("(?=.*[a-z])");
 	const upper = new RegExp("(?=.*[A-Z])");
@@ -40,11 +40,11 @@ function passwordValidation(pass) {
 	const special = new RegExp("(?=.*?[#?!@$%^&*-])");
 	const eight = new RegExp("(?=.{8,})");
 
-	checkValidation(lower, this.lower, pass); // Lower case
-	checkValidation(upper, this.upper, pass); // Upper case
-	checkValidation(number, this.number, pass); // Special char
-	checkValidation(special, this.special, pass); // Numeric char
-	checkValidation(eight, this.eight, pass); // Minimal Length
+	checkValidation(lower, this.lower, pass); // Caixa baixa
+	checkValidation(upper, this.upper, pass); // Caixa alta
+	checkValidation(number, this.number, pass); // Caracter especial
+	checkValidation(special, this.special, pass); // Caracter Numérico
+	checkValidation(eight, this.eight, pass); // Tamanho mínimo
 
 	if (checkValidation(lower, this.lower, pass) && checkValidation(upper, this.upper, pass) && checkValidation(number, this.number, pass) && checkValidation(special, this.special, pass) && checkValidation(eight, this.eight, pass)) {
 		this.allConditionsTrue = true;
@@ -55,7 +55,7 @@ function passwordValidation(pass) {
 	}
 }
 
-// Handle Password Confirmation
+// Autenticação de confirmação de senha
 function authenticateSecondPassword(pass) {
 	if (pass === this.pswrd.value && this.allConditionsTrue) {
 		this.secondInputBox.classList.add("allValid");
@@ -70,5 +70,4 @@ function authenticateSecondPassword(pass) {
 	} else {
 		this.secondInputBox.classList.remove("transparent");
 	}
-	console.log(pass);
 }
